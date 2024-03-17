@@ -1,0 +1,18 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+%}
+%%
+"+"     { printf("Operation: Addition\n"); }
+"-"     { printf("Operation: Subtraction\n"); }
+"*"     { printf("Operation: Multiplication\n"); }
+"/"     { printf("Operation: Division\n"); }
+[0-9]+  { printf("Operand: %s\n", yytext); }
+.|\n    ;
+%%
+int yywrap() {}
+int main() {
+    printf("enter the mathematical expression:");
+    yylex();
+    return 0;
+}
